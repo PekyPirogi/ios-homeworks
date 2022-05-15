@@ -8,6 +8,7 @@
 import UIKit
 
 let mainTabBarController = MainTabBarController()
+let postVC = PostViewController()
 
 
 
