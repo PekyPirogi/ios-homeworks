@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+let profileHeaderVC = ProfileHeaderView()
 
 class ProfileViewController: UIViewController {
 
@@ -15,14 +15,15 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .lightGray
-        
         viewWillLayoutSubviews()
+        profileHeaderVC.addElements()
     }
     
     override func viewWillLayoutSubviews() {
-        let profileHeaderVC = ProfileHeaderView()
+        
         profileHeaderVC.frame = view.safeAreaLayoutGuide.layoutFrame
         view.addSubview(profileHeaderVC)
+        
         
     }
     
