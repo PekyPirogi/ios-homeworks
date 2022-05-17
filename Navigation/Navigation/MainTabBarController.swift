@@ -23,8 +23,9 @@ class MainTabBarController: UITabBarController {
         feedVC.tabBarItem.image = UIImage(systemName: "person.3.sequence.fill")
         profileVC.tabBarItem.title = "Profile"
         profileVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+        tabBar.backgroundColor = .white
         
-        viewControllers = [profileVC,feedVC]
+        viewControllers = [feedVC, profileVC]
     }
 
 }
