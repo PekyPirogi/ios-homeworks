@@ -9,10 +9,14 @@ import Foundation
 import UIKit
 
 class ProfileHeaderView: UIView {
+    
+    private var statusText: String
+    
     override init(frame: CGRect){
+        statusText = ""
         super .init(frame: frame)
         
-        [avatarView, headerView, statusText, statusButton, headerBack] .forEach{addSubview($0)}
+        [avatarView, headerView, statusLabel, statusButton, headerBack, statusEditor] .forEach{addSubview($0)}
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +44,7 @@ class ProfileHeaderView: UIView {
         return header
     }()
     
-    private let statusText: UILabel = {
+    private let statusLabel: UILabel = {
         let status = UILabel(frame: CGRect(x: 150, y: 92 + 78, width: 200, height: 18))
         status.backgroundColor = .lightGray
         status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -51,10 +55,10 @@ class ProfileHeaderView: UIView {
      }()
     
     private lazy var statusButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 16, y: 92 + 112, width: 358, height: 50))
+        let button = UIButton(frame: CGRect(x: 16, y: 92 + 78 + 23 + 40 + 5, width: 358, height: 50))
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Get status", for: .normal)
         button.layer.cornerRadius = 4
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
          
@@ -62,7 +66,8 @@ class ProfileHeaderView: UIView {
      }()
     
     @objc private func buttonPressed() {
-        print(statusText.text ?? "")
+        statusLabel.text = statusText
+        print(statusLabel.text ?? "")
     }
     
     private var headerBack: UIView = {
@@ -71,7 +76,24 @@ class ProfileHeaderView: UIView {
         
         return background
     }()
-
+    
+    private var statusEditor: UITextField = {
+        let editor = UITextField(frame: CGRect(x: 150, y: 92 + 78 + 18 + 5, width: 200, height: 40))
+        editor.backgroundColor = .white
+        editor.textColor = .black
+        editor.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        editor.layer.cornerRadius = 12
+        editor.layer.borderWidth = 1
+        editor.layer.borderColor = UIColor.black.cgColor
+        editor.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        
+        return editor
+    }()
+    
+    @objc private func statusTextChanged(_ textField: UITextField) {
+        statusText.removeAll()
+        statusText.append(textField.text ?? "")
+    }
 
 }
     
