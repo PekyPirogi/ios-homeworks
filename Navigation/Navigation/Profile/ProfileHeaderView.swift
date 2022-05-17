@@ -37,15 +37,22 @@ class ProfileHeaderView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -34),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
         ])
         
         NSLayoutConstraint.activate([
-            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16),
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
+            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
         
         
@@ -107,13 +114,15 @@ class ProfileHeaderView: UIView {
     }
     
     private var statusTextField: UITextField = {
-        let editor = UITextField(frame: CGRect(x: 150, y: 92 + 78 + 18 + 5, width: 200, height: 40))
+        let editor = UITextField()
+        editor.translatesAutoresizingMaskIntoConstraints = false
         editor.backgroundColor = .white
         editor.textColor = .black
         editor.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         editor.layer.cornerRadius = 12
         editor.layer.borderWidth = 1
         editor.layer.borderColor = UIColor.black.cgColor
+        editor.placeholder = "Whats up?"
         editor.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         return editor
