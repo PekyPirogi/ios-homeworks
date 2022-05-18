@@ -21,12 +21,15 @@ class ProfileViewController: UIViewController {
         self.title = "Profile"
         
         
+        
         NSLayoutConstraint.activate([
             profileHeaderVC.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderVC.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             profileHeaderVC.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             profileHeaderVC.heightAnchor.constraint(equalToConstant: 220)
         ])
+        
+        
 
         view.backgroundColor = .lightGray
     }

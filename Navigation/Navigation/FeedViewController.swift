@@ -15,8 +15,7 @@ class FeedViewController: UIViewController {
         
         super.viewDidLoad()
         addPostStackView()
-
-        // Do any additional setup after loading the view.
+       
     }
 
     private let postStackView: UIStackView = {

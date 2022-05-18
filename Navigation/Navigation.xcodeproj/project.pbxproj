@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115988C928354FC0005A5B0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115988C828354FC0005A5B0C /* LoginViewController.swift */; };
 		1172C9F52831509500E4F64D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172C9F42831509500E4F64D /* AppDelegate.swift */; };
 		1172C9F72831509500E4F64D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172C9F62831509500E4F64D /* SceneDelegate.swift */; };
 		1172C9FE2831509900E4F64D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1172C9FD2831509900E4F64D /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115988C828354FC0005A5B0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1172C9F12831509500E4F64D /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1172C9F42831509500E4F64D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1172C9F62831509500E4F64D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				11854A792832B67000541662 /* ProfileHeaderView.swift */,
+				115988C828354FC0005A5B0C /* LoginViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115988C928354FC0005A5B0C /* LoginViewController.swift in Sources */,
 				1172CA0F28315A1A00E4F64D /* PostViewController.swift in Sources */,
 				1172C9F52831509500E4F64D /* AppDelegate.swift in Sources */,
 				1172CA0B2831587300E4F64D /* ProfileViewController.swift in Sources */,
