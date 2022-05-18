@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(profileHeaderVC)
         self.title = "Profile"
         
+        
         NSLayoutConstraint.activate([
             profileHeaderVC.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderVC.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -30,12 +31,4 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
     }
     
-    override func viewWillLayoutSubviews() {
-        
-    }
-    
-   
-        
-   
-
 }

@@ -20,7 +20,7 @@ class ProfileHeaderView: UIView {
         statusText = ""
         super .init(frame: frame)
         
-    
+        
         
         [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
@@ -78,7 +78,6 @@ class ProfileHeaderView: UIView {
    private let fullNameLabel: UILabel = {
        let header = UILabel()
        header.translatesAutoresizingMaskIntoConstraints = false
-       header.backgroundColor = .lightGray
        header.font = UIFont.systemFont(ofSize: 18, weight: .bold)
        header.text = "Super Dog"
         
@@ -88,7 +87,6 @@ class ProfileHeaderView: UIView {
     private let statusLabel: UILabel = {
         let status = UILabel()
         status.translatesAutoresizingMaskIntoConstraints = false
-        status.backgroundColor = .lightGray
         status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         status.textColor = .black
         status.text = "Waiting for something..."
