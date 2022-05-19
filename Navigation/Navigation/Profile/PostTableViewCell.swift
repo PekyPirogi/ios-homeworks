@@ -15,7 +15,7 @@ struct Post {
     var views: Int
 }
 
-class ProfileTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
     
     private var authorLabel: UILabel = {
         let label = UILabel()
@@ -91,7 +91,7 @@ class ProfileTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor),
+            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
             postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             postImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
