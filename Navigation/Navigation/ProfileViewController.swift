@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class ProfileViewController: UIViewController {
     
     
@@ -29,8 +27,6 @@ class ProfileViewController: UIViewController {
             profileHeaderVC.heightAnchor.constraint(equalToConstant: 220)
         ])
         
-        
-
         view.backgroundColor = .lightGray
     }
     

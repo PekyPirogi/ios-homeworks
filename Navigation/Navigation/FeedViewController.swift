@@ -7,8 +7,6 @@
 
 import UIKit
 
-let post = Post(title: "Test title")
-
 class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
