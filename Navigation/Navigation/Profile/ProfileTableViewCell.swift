@@ -77,8 +77,8 @@ class ProfileTableViewCell: UITableViewCell {
         authorLabel.text = postCell.author
         descriptionLabel.text = postCell.description
         postImageView.image = UIImage(named: postCell.image)
-        likesLabel.text = "Likes:" + String(postCell.likes)
-        viewsLabel.text = "Views:" + String(postCell.views)
+        likesLabel.text = "Likes:" + " " + String(postCell.likes)
+        viewsLabel.text = "Views:" + " " + String(postCell.views)
     }
     
     private func layout() {
@@ -113,7 +113,7 @@ class ProfileTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             viewsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            viewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            viewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -16)
         ])
     
     }

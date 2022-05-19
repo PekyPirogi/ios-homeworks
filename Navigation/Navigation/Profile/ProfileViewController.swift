@@ -20,9 +20,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(profileView)
+        navigationController?.navigationBar.isTranslucent = true
+        view.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileView.topAnchor.constraint(equalTo: view.topAnchor),
             profileView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

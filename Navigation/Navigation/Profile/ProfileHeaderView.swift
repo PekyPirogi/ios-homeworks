@@ -13,9 +13,6 @@ class ProfileHeaderView: UIView {
     private var statusText: String
     
     
-    
-    
-    
     override init(frame: CGRect){
         statusText = ""
         super .init(frame: frame)
@@ -45,7 +42,8 @@ class ProfileHeaderView: UIView {
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
@@ -128,7 +126,6 @@ class ProfileHeaderView: UIView {
         statusText.removeAll()
         statusText.append(textField.text ?? "")
     }
-
 }
     
 
