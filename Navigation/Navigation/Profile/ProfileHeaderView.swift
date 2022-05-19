@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         
         
         
-        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField, aimlessButton].forEach { addSubview($0) }
+        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -54,14 +54,6 @@ class ProfileHeaderView: UIView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
-        
-        NSLayoutConstraint.activate([
-            aimlessButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            aimlessButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            aimlessButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
-        ])
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -135,22 +127,6 @@ class ProfileHeaderView: UIView {
     @objc private func statusTextChanged(_ textField: UITextField) {
         statusText.removeAll()
         statusText.append(textField.text ?? "")
-    }
-    
-    private lazy var aimlessButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("I am aimless", for: .normal)
-        button.layer.cornerRadius = 4
-        button.addTarget(self, action: #selector(doNothing), for: .touchUpInside)
-         
-        return button
-     }()
-    
-    @objc private func doNothing() {
-        
     }
 
 }
