@@ -26,7 +26,7 @@ class ProfileHeaderView: UIView {
     
     private let avatarView: UIImageView = {
         let avatar = UIImageView(image: UIImage(named: "Avatar"))
-        avatar.frame = CGRect(x: 16, y: 92 + 16, width: 80, height: 80)
+        avatar.frame = CGRect(x: 16, y: 92 + 16, width: 100, height: 100)
         avatar.layer.cornerRadius = 40
         avatar.layer.borderWidth = 3
         avatar.layer.borderColor = UIColor.white.cgColor
@@ -45,7 +45,7 @@ class ProfileHeaderView: UIView {
     }()
     
     private let statusLabel: UILabel = {
-        let status = UILabel(frame: CGRect(x: 150, y: 92 + 78, width: 200, height: 18))
+        let status = UILabel(frame: CGRect(x: 150, y: 92 + 54, width: 200, height: 18))
         status.backgroundColor = .lightGray
         status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         status.textColor = .gray
@@ -55,11 +55,15 @@ class ProfileHeaderView: UIView {
      }()
     
     private lazy var statusButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 16, y: 92 + 78 + 23 + 40 + 5, width: 358, height: 50))
+        let button = UIButton(frame: CGRect(x: 16, y: 92 + 16 + 100 + 16, width: 358, height: 50))
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
         button.setTitle("Get status", for: .normal)
         button.layer.cornerRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowOpacity = 0.7
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
          
         return button
@@ -78,13 +82,15 @@ class ProfileHeaderView: UIView {
     }()
     
     private var statusEditor: UITextField = {
-        let editor = UITextField(frame: CGRect(x: 150, y: 92 + 78 + 18 + 5, width: 200, height: 40))
+        let editor = UITextField(frame: CGRect(x: 150, y: 92 + 54 + 18 + 5, width: 200, height: 40))
         editor.backgroundColor = .white
         editor.textColor = .black
         editor.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         editor.layer.cornerRadius = 12
         editor.layer.borderWidth = 1
         editor.layer.borderColor = UIColor.black.cgColor
+        editor.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: editor.frame.height))
+        editor.leftViewMode = .always
         editor.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         return editor
