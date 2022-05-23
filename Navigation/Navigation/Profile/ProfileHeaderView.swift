@@ -16,7 +16,7 @@ class ProfileHeaderView: UIView {
         statusText = ""
         super .init(frame: frame)
         
-        [avatarView, headerView, statusLabel, statusButton, headerBack, statusEditor] .forEach{addSubview($0)}
+        [avatarView, headerView, statusLabel, statusButton, statusEditor] .forEach{addSubview($0)}
     }
     
     required init?(coder: NSCoder) {
@@ -74,12 +74,6 @@ class ProfileHeaderView: UIView {
         print(statusLabel.text ?? "")
     }
     
-    private var headerBack: UIView = {
-        let background = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 92))
-        background.backgroundColor = .white
-        
-        return background
-    }()
     
     private var statusEditor: UITextField = {
         let editor = UITextField(frame: CGRect(x: 150, y: 92 + 54 + 18 + 5, width: 200, height: 40))
