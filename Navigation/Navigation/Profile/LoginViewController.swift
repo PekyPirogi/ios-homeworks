@@ -127,6 +127,8 @@ class LoginViewController: UIViewController {
         login.autocapitalizationType = .none
         login.textColor = .black
         login.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: login.frame.height))
+        login.leftViewMode = .always
         login.placeholder = "Email or phone"
         
         return login
@@ -137,6 +139,8 @@ class LoginViewController: UIViewController {
         pass.translatesAutoresizingMaskIntoConstraints = false
         pass.backgroundColor = .systemGray6
         pass.placeholder = "Password"
+        pass.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: pass.frame.height))
+        pass.leftViewMode = .always
         pass.isSecureTextEntry = true
         
         return pass
@@ -149,8 +153,8 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginStackView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 120),
-            loginStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            loginStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            loginStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            loginStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             loginStackView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
