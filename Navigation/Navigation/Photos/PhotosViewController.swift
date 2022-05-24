@@ -36,7 +36,6 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Photo Gallery"
         layout()
-        // Do any additional setup after loading the view.
     }
     
     private func layout() {

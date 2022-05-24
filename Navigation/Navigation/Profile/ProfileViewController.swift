@@ -13,6 +13,7 @@ let post3 = Post(author: "WannaBeYourDog", description: "Do u like ahegao?", ima
 let post4 = Post(author: "Kimiko", description: "Japan is awesome!", image: "post4", likes: 23, views: 35)
 
 var postFeed = [ post1, post2, post3, post4 ]
+var profileViewElements = [[postFeed], [photoArray]]
 
 class ProfileViewController: UIViewController {
     
@@ -41,14 +42,17 @@ class ProfileViewController: UIViewController {
         
         return profileView
     }()
-    
 }
 
 //MARK: - UITableViewDataSource
 
 extension ProfileViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        profileViewElements.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postFeed.count
+        return profileViewElements[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
