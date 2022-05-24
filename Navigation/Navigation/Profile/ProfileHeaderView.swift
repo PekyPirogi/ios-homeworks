@@ -18,7 +18,6 @@ class ProfileHeaderView: UIView {
         super .init(frame: frame)
         
         
-        
         [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
