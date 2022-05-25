@@ -57,7 +57,7 @@ class FeedViewController: UIViewController {
     }()
     
     @objc private func postShow() {
-        let postVC = PhotosViewController()
+        let postVC = PostViewController()
         navigationController?.pushViewController(postVC, animated: true)
     }
     
