@@ -36,6 +36,12 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Photo Gallery"
         layout()
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func layout() {

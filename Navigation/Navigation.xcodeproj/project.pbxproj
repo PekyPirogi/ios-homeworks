@@ -20,7 +20,8 @@
 		1172CA11283160AD00E4F64D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172CA10283160AD00E4F64D /* InfoViewController.swift */; };
 		11831EE9283D3EB200F98F39 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11831EE8283D3EB200F98F39 /* PhotosViewController.swift */; };
 		11831EEB283D40E100F98F39 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11831EEA283D40E100F98F39 /* PhotosCollectionViewCell.swift */; };
-		11831EED283D567E00F98F39 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11831EEC283D567E00F98F39 /* PhotosTableViewCell.swift */; };
+		11831EF0283D65E400F98F39 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11831EEF283D65E400F98F39 /* PhotosTableViewCell.swift */; };
+		11831EF4283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11831EF3283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift */; };
 		11854A7A2832B67000541662 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11854A792832B67000541662 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,8 @@
 		1172CA10283160AD00E4F64D /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		11831EE8283D3EB200F98F39 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotosViewController.swift; path = Navigation/Photos/PhotosViewController.swift; sourceTree = SOURCE_ROOT; };
 		11831EEA283D40E100F98F39 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
-		11831EEC283D567E00F98F39 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		11831EEF283D65E400F98F39 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		11831EF3283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		11854A792832B67000541662 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,7 +96,8 @@
 			children = (
 				11831EE8283D3EB200F98F39 /* PhotosViewController.swift */,
 				11831EEA283D40E100F98F39 /* PhotosCollectionViewCell.swift */,
-				11831EEC283D567E00F98F39 /* PhotosTableViewCell.swift */,
+				11831EF3283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift */,
+				11831EEF283D65E400F98F39 /* PhotosTableViewCell.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -185,13 +188,14 @@
 				1172CA0F28315A1A00E4F64D /* PostViewController.swift in Sources */,
 				1172C9F52831509500E4F64D /* AppDelegate.swift in Sources */,
 				115988CB283643A5005A5B0C /* PostTableViewCell.swift in Sources */,
+				11831EF4283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift in Sources */,
 				11831EEB283D40E100F98F39 /* PhotosCollectionViewCell.swift in Sources */,
 				1172CA0B2831587300E4F64D /* ProfileViewController.swift in Sources */,
 				1172CA11283160AD00E4F64D /* InfoViewController.swift in Sources */,
 				1172CA092831569400E4F64D /* MainTabBarController.swift in Sources */,
-				11831EED283D567E00F98F39 /* PhotosTableViewCell.swift in Sources */,
 				1172CA0D2831588400E4F64D /* FeedViewController.swift in Sources */,
 				1172C9F72831509500E4F64D /* SceneDelegate.swift in Sources */,
+				11831EF0283D65E400F98F39 /* PhotosTableViewCell.swift in Sources */,
 				11854A7A2832B67000541662 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
