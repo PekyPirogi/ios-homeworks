@@ -18,11 +18,14 @@ class ProfileHeaderView: UIView {
         super .init(frame: frame)
         setupGestures()
         
-        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
+        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField, avavtarBackView].forEach { addSubview($0) }
+        
+        avavtarBackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        avavtarBackView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
         
         leadingAvatarImageView = avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
-        widthAvatarImageView = avatarImageView.widthAnchor.constraint(equalToConstant: 100)
-        heightAvatarImageView = avatarImageView.heightAnchor.constraint(equalToConstant: 100)
+        widthAvatarImageView = avatarImageView.widthAnchor.constraint(equalToConstant: 120)
+        heightAvatarImageView = avatarImageView.heightAnchor.constraint(equalToConstant: 120)
         topAvatarImageView = avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16)
         
         
@@ -30,14 +33,16 @@ class ProfileHeaderView: UIView {
             leadingAvatarImageView, widthAvatarImageView, heightAvatarImageView, topAvatarImageView
         ])
         
+        avatarImageView.layer.cornerRadius = heightAvatarImageView.constant / 2
+        
         NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16 + 120 + 16),
         ])
         
         NSLayoutConstraint.activate([
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 16),
-            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusLabel.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
         ])
         
         NSLayoutConstraint.activate([
@@ -50,7 +55,7 @@ class ProfileHeaderView: UIView {
         
         NSLayoutConstraint.activate([
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
-            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16 + 120 + 16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
@@ -63,7 +68,9 @@ class ProfileHeaderView: UIView {
     private let avavtarBackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(white: 1, alpha: 1)
+        view.backgroundColor = UIColor(white: 0, alpha: 0)
+        view.isHidden = true
+        
         
         return view
     }()
@@ -76,7 +83,7 @@ class ProfileHeaderView: UIView {
         button.tintColor = .black
         button.clipsToBounds = true
         button.contentMode = .scaleAspectFill
-        button.addTarget(self, action: #selector(reverseAnimation), for: .touchUpInside)
+        
         
         return button
     }()
@@ -92,7 +99,7 @@ class ProfileHeaderView: UIView {
         
         let avatar = UIImageView(image: UIImage(named: "Avatar"))
         avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.layer.cornerRadius = 40
+        
         avatar.layer.borderWidth = 3
         avatar.layer.borderColor = UIColor.white.cgColor
         avatar.layer.masksToBounds = true
@@ -164,37 +171,55 @@ class ProfileHeaderView: UIView {
     
     @objc private func tapAction() {
         UIImageView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [self] in
-            window?.addSubview(avavtarBackView)
-            window?.bringSubviewToFront(avavtarBackView)
-            
+//            window?.addSubview(avavtarBackView)
+//            window?.bringSubviewToFront(avavtarBackView)
+            avavtarBackView.isHidden = false
+            self.bringSubviewToFront(avavtarBackView)
             avavtarBackView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-            avavtarBackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-            avavtarBackView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
-            avavtarBackView.layoutIfNeeded()
-            avavtarBackView.addSubview(avatarImageView)
             
-            
-            
-            avatarImageView.centerXAnchor.constraint(equalTo: avavtarBackView.centerXAnchor).isActive = true
-            avatarImageView.centerYAnchor.constraint(equalTo: avavtarBackView.centerYAnchor).isActive = true
+            self.bringSubviewToFront(avatarImageView)
             widthAvatarImageView.constant = UIScreen.main.bounds.width
             heightAvatarImageView.constant = widthAvatarImageView.constant
+            leadingAvatarImageView.constant = 0
+            topAvatarImageView.constant = UIScreen.main.bounds.height / 2 - heightAvatarImageView.constant / 2
+            avatarImageView.layer.cornerRadius = 0
+        
+            self.layoutIfNeeded()
             
-            avatarImageView.layoutIfNeeded()
-            
-        } completion: {  _ in
-            
-            self.avavtarBackView.addSubview(self.xButton)
-            
-            self.xButton.trailingAnchor.constraint(equalTo: self.avavtarBackView.trailingAnchor, constant: -8).isActive = true
+        } completion: { [self]  _ in
+            self.addSubview(self.xButton)
+            xButton.addTarget(self, action: #selector(reverseAnimation), for: .touchUpInside)
+
+            self.xButton.trailingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: -8).isActive = true
             self.xButton.bottomAnchor.constraint(equalTo: self.avatarImageView.topAnchor, constant: -8).isActive = true
             self.xButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
             self.xButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+            self.xButton.alpha = 0
+
+            self.layoutIfNeeded()
+            UIButton.animate(withDuration: 0.3) {
+                self.xButton.alpha = 1
+            }
+            
         }
     }
     
     @objc private func reverseAnimation() {
-        
+        UIImageView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [self] in
+            avavtarBackView.backgroundColor = UIColor(white: 0, alpha: 0)
+            xButton.alpha = 0
+            widthAvatarImageView.constant = 120
+            heightAvatarImageView.constant = widthAvatarImageView.constant
+            leadingAvatarImageView.constant = 16
+            topAvatarImageView.constant = 16
+            avatarImageView.layer.cornerRadius = heightAvatarImageView.constant / 2
+            
+            self.layoutIfNeeded()
+
+        } completion: {  _ in
+
+        }
+        print("tap")
     }
     
 }
