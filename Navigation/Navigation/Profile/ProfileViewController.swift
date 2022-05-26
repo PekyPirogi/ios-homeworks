@@ -16,6 +16,7 @@ var postFeed = [ post1, post2, post3, post4 ]
 
 class ProfileViewController: UIViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,7 +90,6 @@ extension ProfileViewController: UITableViewDelegate {
             
         case 0:
             let header = ProfileHeaderView()
-            
             return header
         default:
             

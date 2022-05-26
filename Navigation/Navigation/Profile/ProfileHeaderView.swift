@@ -16,7 +16,7 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect){
         statusText = ""
         super .init(frame: frame)
-        
+        setupGestures()
         
         [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
@@ -125,6 +125,17 @@ class ProfileHeaderView: UIView {
         statusText.removeAll()
         statusText.append(textField.text ?? "")
     }
+    
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        statusLabel.text = "tap tap"
+    }
+    
 }
     
 
