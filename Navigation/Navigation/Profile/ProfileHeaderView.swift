@@ -20,11 +20,14 @@ class ProfileHeaderView: UIView {
         
         [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
+        leadingAvatarImageView = avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        widthAvatarImageView = avatarImageView.widthAnchor.constraint(equalToConstant: 100)
+        heightAvatarImageView = avatarImageView.heightAnchor.constraint(equalToConstant: 100)
+        topAvatarImageView = avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16)
+        
+        
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100)
+            leadingAvatarImageView, widthAvatarImageView, heightAvatarImageView, topAvatarImageView
         ])
         
         NSLayoutConstraint.activate([
@@ -57,6 +60,33 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let avavtarBackView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
+        
+        return view
+    }()
+    
+    private var xButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(systemName: "multiply.circle")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(buttonImage, for: .normal)
+        button.tintColor = .black
+        button.clipsToBounds = true
+        button.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(reverseAnimation), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private var leadingAvatarImageView = NSLayoutConstraint()
+    private var trailingAvatarImageView = NSLayoutConstraint()
+    private var heightAvatarImageView = NSLayoutConstraint()
+    private var widthAvatarImageView = NSLayoutConstraint()
+    private var topAvatarImageView = NSLayoutConstraint()
+
     
     private let avatarImageView: UIImageView = {
         
@@ -133,7 +163,38 @@ class ProfileHeaderView: UIView {
     }
     
     @objc private func tapAction() {
-        statusLabel.text = "tap tap"
+        UIImageView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [self] in
+            window?.addSubview(avavtarBackView)
+            window?.bringSubviewToFront(avavtarBackView)
+            
+            avavtarBackView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+            avavtarBackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            avavtarBackView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
+            avavtarBackView.layoutIfNeeded()
+            avavtarBackView.addSubview(avatarImageView)
+            
+            
+            
+            avatarImageView.centerXAnchor.constraint(equalTo: avavtarBackView.centerXAnchor).isActive = true
+            avatarImageView.centerYAnchor.constraint(equalTo: avavtarBackView.centerYAnchor).isActive = true
+            widthAvatarImageView.constant = UIScreen.main.bounds.width
+            heightAvatarImageView.constant = widthAvatarImageView.constant
+            
+            avatarImageView.layoutIfNeeded()
+            
+        } completion: {  _ in
+            
+            self.avavtarBackView.addSubview(self.xButton)
+            
+            self.xButton.trailingAnchor.constraint(equalTo: self.avavtarBackView.trailingAnchor, constant: -8).isActive = true
+            self.xButton.bottomAnchor.constraint(equalTo: self.avatarImageView.topAnchor, constant: -8).isActive = true
+            self.xButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            self.xButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+    }
+    
+    @objc private func reverseAnimation() {
+        
     }
     
 }
