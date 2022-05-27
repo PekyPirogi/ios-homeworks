@@ -13,16 +13,13 @@ class ProfileHeaderView: UIView {
     private var statusText: String
     
     
-    
-    
-    
     override init(frame: CGRect){
         statusText = ""
         super .init(frame: frame)
         
         
         
-        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField, aimlessButton].forEach { addSubview($0) }
+        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -45,7 +42,8 @@ class ProfileHeaderView: UIView {
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
@@ -54,14 +52,6 @@ class ProfileHeaderView: UIView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
-        
-        NSLayoutConstraint.activate([
-            aimlessButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            aimlessButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            aimlessButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
-        ])
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -136,23 +126,6 @@ class ProfileHeaderView: UIView {
         statusText.removeAll()
         statusText.append(textField.text ?? "")
     }
-    
-    private lazy var aimlessButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("I am aimless", for: .normal)
-        button.layer.cornerRadius = 4
-        button.addTarget(self, action: #selector(doNothing), for: .touchUpInside)
-         
-        return button
-     }()
-    
-    @objc private func doNothing() {
-        
-    }
-
 }
     
 

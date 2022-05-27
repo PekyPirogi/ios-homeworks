@@ -7,9 +7,6 @@
 
 import UIKit
 
-struct Post {
-    var title: String
-}
 
 class PostViewController: UIViewController {
 
@@ -17,7 +14,6 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .gray
-        self.title = post.title
         
         makeInfoBarItem()
         

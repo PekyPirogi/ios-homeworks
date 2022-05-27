@@ -20,12 +20,12 @@ class MainTabBarController: UITabBarController {
     
     private func setupControllers() {
         let feedVC = UINavigationController(rootViewController: FeedViewController())
-        let profileVC = UINavigationController(rootViewController: LoginViewController())
+        let loginVC = UINavigationController(rootViewController: LoginViewController())
         
         feedVC.tabBarItem.title = "Feed"
         feedVC.tabBarItem.image = UIImage(systemName: "person.3.sequence.fill")
-        profileVC.tabBarItem.title = "Profile"
-        profileVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+        loginVC.tabBarItem.title = "Profile"
+        loginVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
         
         
         
@@ -41,7 +41,7 @@ class MainTabBarController: UITabBarController {
         }
         
         
-        viewControllers = [feedVC, profileVC]
+        viewControllers = [feedVC, loginVC]
     }
 
 }
