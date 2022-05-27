@@ -16,6 +16,7 @@ var postFeed = [ post1, post2, post3, post4 ]
 
 class ProfileViewController: UIViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,25 +39,42 @@ class ProfileViewController: UIViewController {
         profileView.dataSource = self
         profileView.delegate = self
         profileView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        profileView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
+        
         
         return profileView
     }()
-    
 }
 
 //MARK: - UITableViewDataSource
 
 extension ProfileViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postFeed.count
+        if section == 0 {
+                return 1
+        } else {
+                return postFeed.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-        cell.setupCell(postFeed[indexPath.row])
-        
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+           cell.setupCell(postFeed[indexPath.row])
+            
+            return cell
+        }
     }
+    
     
 }
 
@@ -68,11 +86,42 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = ProfileHeaderView()
-        
-        return header
+        switch section {
+            
+        case 0:
+            let header = ProfileHeaderView()
+            return header
+        default:
+            
+            return nil
+        }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            let height = tableView.sectionHeaderHeight
+            
+            return height
+        }   else {
+            return 0.00001
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        0.000001
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let photosVC = PhotosViewController()
+            navigationController?.pushViewController(photosVC, animated: true)
+        }
+    }
 }
 
 extension UIView {
