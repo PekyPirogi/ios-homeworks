@@ -16,6 +16,17 @@ var postFeed = [ post1, post2, post3, post4 ]
 
 class ProfileViewController: UIViewController {
     
+    private lazy var profileView: UITableView = {
+        let profileView = UITableView(frame: .zero, style: .grouped)
+        profileView.translatesAutoresizingMaskIntoConstraints = false
+        profileView.dataSource = self
+        profileView.delegate = self
+        profileView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        profileView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
+        
+        
+        return profileView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +43,6 @@ class ProfileViewController: UIViewController {
         ])
         
     }
-    
-    private lazy var profileView: UITableView = {
-        let profileView = UITableView(frame: .zero, style: .grouped)
-        profileView.translatesAutoresizingMaskIntoConstraints = false
-        profileView.dataSource = self
-        profileView.delegate = self
-        profileView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
-        profileView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
-        
-        
-        return profileView
-    }()
 }
 
 //MARK: - UITableViewDataSource

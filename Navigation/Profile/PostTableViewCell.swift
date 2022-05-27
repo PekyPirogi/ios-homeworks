@@ -67,6 +67,7 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        setupGestures()
     }
     
     required init?(coder: NSCoder) {
@@ -79,6 +80,16 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = UIImage(named: postCell.image)
         likesLabel.text = "Likes:" + " " + String(postCell.likes)
         viewsLabel.text = "Views:" + " " + String(postCell.views)
+    }
+    
+    private func setupGestures() {
+        let tapGesture = UIGestureRecognizer(target: self, action: #selector(tapAction))
+        likesLabel.isUserInteractionEnabled = true
+        likesLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        print("tap tap")
     }
     
     private func layout() {

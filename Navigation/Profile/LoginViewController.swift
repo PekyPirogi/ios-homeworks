@@ -147,32 +147,18 @@ class LoginViewController: UIViewController {
     @objc private func loginPressed() {
         let loginText = login.text ?? ""
         let passText = password.text ?? ""
-        shortPassLabel.removeFromSuperview()
+        var loginIsEnabled = false
+        var passIsEnabled = false
         
-//        if passText.isEmpty == false || loginText.isEmpty == false {
-//            if passText.count >= 6 && passText.isEmpty == false {
-//                if loginText == currentLogin && passText == currentPassword {
-//                    let profileVC = ProfileViewController()
-//                    navigationController?.pushViewController(profileVC, animated: true)
-//                } else {
-//                    makeWrongLogAlert()
-//                }
-//            } else {
-//                makeShortPassLabel()
-//            }
-//        } else  {
-//            if loginText.isEmpty == true {
-//                animateEmptyField(field: self.login)
-//            } else if passText.isEmpty == true {
-//                animateEmptyField(field: self.password)
-//            }
-//        }
+        shortPassLabel.removeFromSuperview()
+        loginIsEnabled = false
+        passIsEnabled = false
+        
         if loginText.isEmpty == true {
             animateEmptyField(field: self.login)
         } else {
             if loginText == currentLogin && passText == currentPassword {
-                let profileVC = ProfileViewController()
-                navigationController?.pushViewController(profileVC, animated: true)
+                loginIsEnabled = true
             } else {
                 if passText.isEmpty == false {
                     makeWrongLogAlert()
@@ -185,8 +171,7 @@ class LoginViewController: UIViewController {
         } else {
             if passText.count >= 6 {
                 if loginText == currentLogin && passText == currentPassword {
-                    let profileVC = ProfileViewController()
-                    navigationController?.pushViewController(profileVC, animated: true)
+                    passIsEnabled = true
                 } else {
                     if loginText.isEmpty == false {
                     makeWrongLogAlert()
@@ -198,6 +183,12 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+        
+        if loginIsEnabled == true && passIsEnabled == true {
+            let profileVC = ProfileViewController()
+            navigationController?.pushViewController(profileVC, animated: true)
+        }
+        
     }
     
     private func animateEmptyField(field: UITextField) {
