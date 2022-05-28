@@ -33,7 +33,6 @@ class ProfileHeaderView: UIView {
         view.backgroundColor = UIColor(white: 0, alpha: 0)
         view.isHidden = true
         
-        
         return view
     }()
     
@@ -45,7 +44,6 @@ class ProfileHeaderView: UIView {
         button.tintColor = .black
         button.clipsToBounds = true
         button.contentMode = .scaleAspectFill
-        
         
         return button
     }()

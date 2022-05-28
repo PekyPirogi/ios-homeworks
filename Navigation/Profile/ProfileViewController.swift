@@ -154,8 +154,9 @@ extension ProfileViewController: PostTableViewDelegate {
         let postView = ProfilePostViewController()
         let post = postFeed[postIndex]
         postView.setupPostView(author: post.author, image: post.image, description: post.description, likes: post.likes, views: post.views)
-        present(postView, animated: true)
-        print("tap")
-        
+        present(postView, animated: true) {
+            postFeed[postIndex].views += 1
+            self.profileView.reloadData()
+        }
     }
 }

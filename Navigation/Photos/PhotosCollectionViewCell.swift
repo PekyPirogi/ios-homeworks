@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol PhotosCVCellDelegate: AnyObject {
+    func showPhoto(photo: UIImage)
+}
+
 class PhotosCollectionViewCell: UICollectionViewCell {
+    weak var photosCVCellDelegate: PhotosCVCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(photoCellImageView)
+        setupGestures()
         
         NSLayoutConstraint.activate([
             photoCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -27,13 +33,23 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private var photoCellImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         
-        
         return image
     }()
+    
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        photoCellImageView.isUserInteractionEnabled = true
+        photoCellImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        photosCVCellDelegate?.showPhoto(photo: photoCellImageView.image!)
+    }
     
      func customizePhotoCell(number: Int) {
         photoCellImageView.image = photoArray[number]

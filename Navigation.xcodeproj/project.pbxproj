@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		112A0CF828428BD000A88E72 /* ProfilePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A0CF728428BD000A88E72 /* ProfilePostViewController.swift */; };
+		112A0CFB2842B5BF00A88E72 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A0CFA2842B5BF00A88E72 /* PhotoView.swift */; };
 		115988C928354FC0005A5B0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115988C828354FC0005A5B0C /* LoginViewController.swift */; };
 		115988CB283643A5005A5B0C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115988CA283643A5005A5B0C /* PostTableViewCell.swift */; };
 		1172C9F52831509500E4F64D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172C9F42831509500E4F64D /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		112A0CF728428BD000A88E72 /* ProfilePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostViewController.swift; sourceTree = "<group>"; };
+		112A0CFA2842B5BF00A88E72 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		115988C828354FC0005A5B0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		115988CA283643A5005A5B0C /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		1172C9F12831509500E4F64D /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,14 +61,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		112A0CF628428B9500A88E72 /* Post */ = {
+		112A0CF628428B9500A88E72 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
 				1172CA0E28315A1A00E4F64D /* PostViewController.swift */,
-				115988CA283643A5005A5B0C /* PostTableViewCell.swift */,
-				112A0CF728428BD000A88E72 /* ProfilePostViewController.swift */,
+				1172CA0C2831588400E4F64D /* FeedViewController.swift */,
 			);
-			path = Post;
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		112A0CF928429A6E00A88E72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				115988C828354FC0005A5B0C /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		1172C9E82831509400E4F64D = {
@@ -88,12 +97,12 @@
 		1172C9F32831509500E4F64D /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				112A0CF628428B9500A88E72 /* Post */,
+				112A0CF928429A6E00A88E72 /* Login */,
+				112A0CF628428B9500A88E72 /* Feed */,
 				11854A782832B62900541662 /* Profile */,
 				11831EEE283D576A00F98F39 /* Photos */,
 				1172C9F42831509500E4F64D /* AppDelegate.swift */,
 				1172CA082831569400E4F64D /* MainTabBarController.swift */,
-				1172CA0C2831588400E4F64D /* FeedViewController.swift */,
 				1172CA10283160AD00E4F64D /* InfoViewController.swift */,
 				1172C9F62831509500E4F64D /* SceneDelegate.swift */,
 				1172C9FD2831509900E4F64D /* Assets.xcassets */,
@@ -108,8 +117,7 @@
 			children = (
 				11831EE8283D3EB200F98F39 /* PhotosViewController.swift */,
 				11831EEA283D40E100F98F39 /* PhotosCollectionViewCell.swift */,
-				11831EF3283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift */,
-				11831EEF283D65E400F98F39 /* PhotosTableViewCell.swift */,
+				112A0CFA2842B5BF00A88E72 /* PhotoView.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -119,7 +127,10 @@
 			children = (
 				1172CA0A2831587300E4F64D /* ProfileViewController.swift */,
 				11854A792832B67000541662 /* ProfileHeaderView.swift */,
-				115988C828354FC0005A5B0C /* LoginViewController.swift */,
+				11831EF3283E4CE500F98F39 /* PhotosProfileCollectionViewCell.swift */,
+				11831EEF283D65E400F98F39 /* PhotosTableViewCell.swift */,
+				112A0CF728428BD000A88E72 /* ProfilePostViewController.swift */,
+				115988CA283643A5005A5B0C /* PostTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 				11831EF0283D65E400F98F39 /* PhotosTableViewCell.swift in Sources */,
 				112A0CF828428BD000A88E72 /* ProfilePostViewController.swift in Sources */,
 				11854A7A2832B67000541662 /* ProfileHeaderView.swift in Sources */,
+				112A0CFB2842B5BF00A88E72 /* PhotoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
