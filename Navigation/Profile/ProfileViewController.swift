@@ -7,10 +7,10 @@
 
 import UIKit
 
-let post1 = Post(author: "Doge", description: "I am a fu**ing pillow!", image: "post1", likes: 999, views: 999)
-let post2 = Post(author: "Doge", description: "Haters gonna hate", image: "post2", likes: 666, views: 666)
-let post3 = Post(author: "WannaBeYourDog", description: "Do u like ahegao?", image: "post3", likes: 14356, views: 50435)
-let post4 = Post(author: "Kimiko", description: "Japan is awesome!", image: "post4", likes: 23, views: 35)
+let post1 = Post(author: "Doge", description: "I am a fu**ing pillow!", image: "post1", likes: 999, views: 999, id: 0)
+let post2 = Post(author: "Doge", description: "Haters gonna hate", image: "post2", likes: 666, views: 666, id: 1)
+let post3 = Post(author: "WannaBeYourDog", description: "Do u like ahegao?", image: "post3", likes: 14356, views: 50435, id: 2)
+let post4 = Post(author: "Kimiko", description: "Japan is awesome!", image: "post4", likes: 23, views: 35, id: 3)
 
 var postFeed = [ post1, post2, post3, post4 ]
 
@@ -68,7 +68,8 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-           cell.setupCell(postFeed[indexPath.row])
+            cell.setupCell(postFeed[indexPath.row])
+            cell.postTableViewDelegate = self
             
             return cell
         }
@@ -126,5 +127,35 @@ extension ProfileViewController: UITableViewDelegate {
 extension UIView {
     static var identifier: String {
         return String(describing: self)
+    }
+}
+
+extension ProfileViewController: PostTableViewDelegate {
+    func addLike(id:  Int) {
+        var postIndex = 0
+        print(postFeed[postIndex].likes)
+        for (index, value) in postFeed.enumerated() {
+            if id == value.id {
+                postIndex = index
+            }
+        }
+        postFeed[postIndex].likes += 1
+        print(postFeed[postIndex].likes)
+        profileView.reloadData()
+    }
+    
+    func showPost(id: Int) {
+        var postIndex = 0
+        for (index, value) in postFeed.enumerated() {
+            if id == value.id {
+                postIndex = index
+            }
+        }
+        let postView = ProfilePostViewController()
+        let post = postFeed[postIndex]
+        postView.setupPostView(author: post.author, image: post.image, description: post.description, likes: post.likes, views: post.views)
+        present(postView, animated: true)
+        print("tap")
+        
     }
 }

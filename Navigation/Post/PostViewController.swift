@@ -15,7 +15,7 @@ class PostViewController: UIViewController {
 
         view.backgroundColor = .gray
         
-        makeInfoBarItem()
+        //makeInfoBarItem()
         
         
     }

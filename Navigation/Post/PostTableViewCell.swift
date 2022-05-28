@@ -13,9 +13,18 @@ struct Post {
     var image: String
     var likes: Int
     var views: Int
+    var id: Int
 }
 
+protocol PostTableViewDelegate: AnyObject {
+    func addLike(id: Int)
+    func showPost(id: Int)
+}
+
+
 class PostTableViewCell: UITableViewCell {
+    
+    weak var postTableViewDelegate: PostTableViewDelegate?
     
     private var authorLabel: UILabel = {
         let label = UILabel()
@@ -64,6 +73,12 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
+    private var id: Int = {
+        let id = Int()
+        
+        return id
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
@@ -80,16 +95,26 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = UIImage(named: postCell.image)
         likesLabel.text = "Likes:" + " " + String(postCell.likes)
         viewsLabel.text = "Views:" + " " + String(postCell.views)
+        id.self = postCell.id
     }
     
     private func setupGestures() {
-        let tapGesture = UIGestureRecognizer(target: self, action: #selector(tapAction))
+        let likeTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTapAction))
         likesLabel.isUserInteractionEnabled = true
-        likesLabel.addGestureRecognizer(tapGesture)
+        likesLabel.addGestureRecognizer(likeTapGesture)
+        
+        let postTapGesture = UITapGestureRecognizer(target: self, action: #selector(postTapAction))
+        postImageView.isUserInteractionEnabled = true
+        postImageView.addGestureRecognizer(postTapGesture)
     }
     
-    @objc private func tapAction() {
-        print("tap tap")
+    @objc private func likeTapAction() {
+        postTableViewDelegate?.addLike(id: id)
+        //likesLabel.isUserInteractionEnabled = false попытался выключить возможность поставить повторный лайк, в симуляторе работает не корректно, не понимаю почему
+    }
+    
+    @objc private func postTapAction() {
+        postTableViewDelegate?.showPost(id: id)
     }
     
     private func layout() {
