@@ -12,21 +12,6 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String
     
-    
-    override init(frame: CGRect){
-        statusText = ""
-        super .init(frame: frame)
-        
-        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField, avavtarBackView].forEach { addSubview($0) }
-        
-        setupConstraints()
-        setupGestures()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private let avavtarBackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -114,6 +99,20 @@ class ProfileHeaderView: UIView {
         
         return editor
     }()
+    
+    override init(frame: CGRect){
+        statusText = ""
+        super .init(frame: frame)
+        
+        [avatarImageView, fullNameLabel, statusLabel, setStatusButton, statusTextField, avavtarBackView].forEach { addSubview($0) }
+        
+        setupConstraints()
+        setupGestures()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @objc private func buttonPressed() {
         if statusTextField.text?.isEmpty == true {

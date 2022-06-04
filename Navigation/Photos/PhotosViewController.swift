@@ -19,7 +19,6 @@ var photoArray: [UIImage] = {
 }()
 
 class PhotosViewController: UIViewController {
-
     private lazy var photoView = PhotoView()
     
     private lazy var photoCollectionView: UICollectionView = {

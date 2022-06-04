@@ -9,13 +9,6 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        addPostStackView()
-       
-    }
-
     private let postStackView: UIStackView = {
        let postSV = UIStackView()
         postSV.translatesAutoresizingMaskIntoConstraints = false
@@ -25,18 +18,6 @@ class FeedViewController: UIViewController {
         
         return postSV
     }()
-    
-    private func addPostStackView() {
-        view.addSubview(postStackView)
-        
-        [postButton, postButton1].forEach { postStackView.addArrangedSubview($0) }
-        
-        NSLayoutConstraint.activate([
-            postStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            postStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            postStackView.widthAnchor.constraint(equalTo: view.widthAnchor)
-        ])
-    }
     
     private let postButton: UIButton = {
         let postButton = UIButton()
@@ -57,9 +38,24 @@ class FeedViewController: UIViewController {
     }()
     
     @objc private func postShow() {
-        let postVC = PhotosViewController()
+        let postVC = ProfileViewController()
         navigationController?.pushViewController(postVC, animated: true)
     }
     
-                          
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addPostStackView()
+    }
+    
+    private func addPostStackView() {
+        view.addSubview(postStackView)
+        
+        [postButton, postButton1].forEach { postStackView.addArrangedSubview($0) }
+        
+        NSLayoutConstraint.activate([
+            postStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            postStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            postStackView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+    }
 }

@@ -131,6 +131,25 @@ extension UIView {
 }
 
 extension ProfileViewController: PostTableViewDelegate {
+    func deletePost(id: Int) {
+        var postIndex = 0
+        for (index, value) in postFeed.enumerated() {
+            if id == value.id {
+                postIndex = index
+            }
+        }
+        let alert = UIAlertController(title: "Warning", message: "Do you want to delete this post?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Sure", style: .destructive) { _ in
+            postFeed.remove(at: postIndex)
+            self.profileView.reloadData()
+        }
+        let noAction = UIAlertAction(title: "OH NO!", style: .cancel) { _ in
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true)
+    }
+    
     func addLike(id:  Int) {
         var postIndex = 0
         print(postFeed[postIndex].likes)

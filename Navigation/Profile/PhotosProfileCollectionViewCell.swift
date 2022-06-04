@@ -9,6 +9,14 @@ import UIKit
 
 class PhotosProfileCollectionViewCell: UICollectionViewCell {
     
+    private var photoCellImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+    
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(photoCellImageView)
@@ -27,14 +35,6 @@ class PhotosProfileCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var photoCellImageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-    
-        return image
-    }()
 
     func customizePhotoProfileCell(number: Int) {
         photoCellImageView.image = photoArray[number]

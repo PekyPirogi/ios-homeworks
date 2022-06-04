@@ -19,6 +19,7 @@ struct Post {
 protocol PostTableViewDelegate: AnyObject {
     func addLike(id: Int)
     func showPost(id: Int)
+    func deletePost(id: Int)
 }
 
 
@@ -106,6 +107,10 @@ class PostTableViewCell: UITableViewCell {
         let postTapGesture = UITapGestureRecognizer(target: self, action: #selector(postTapAction))
         postImageView.isUserInteractionEnabled = true
         postImageView.addGestureRecognizer(postTapGesture)
+        
+        let postSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(postSwipeAction))
+        postSwipeGesture.direction = .left
+        postImageView.addGestureRecognizer(postSwipeGesture)
     }
     
     @objc private func likeTapAction() {
@@ -115,6 +120,10 @@ class PostTableViewCell: UITableViewCell {
     
     @objc private func postTapAction() {
         postTableViewDelegate?.showPost(id: id)
+    }
+    
+    @objc private func postSwipeAction() {
+        postTableViewDelegate?.deletePost(id: id)
     }
     
     private func layout() {

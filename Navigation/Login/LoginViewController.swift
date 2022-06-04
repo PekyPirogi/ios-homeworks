@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-private var currentLogin = "Doge"
-private var currentPassword = "Password"
+
 
 class LoginViewController: UIViewController {
     
+    private var currentLogin = "Doge"
+    private var currentPassword = "Password"
     private let notificationCenter = NotificationCenter.default
 
     private let scrollView: UIScrollView = {

@@ -9,12 +9,13 @@ import UIKit
 
 class PhotoView: UIView {
     
-        var photoImageView: UIImageView = {
+    var photoImageView: UIImageView = {
             let image = UIImageView()
             image.translatesAutoresizingMaskIntoConstraints = false
         
             return image
         }()
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         addSubview(photoImageView)

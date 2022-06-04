@@ -35,7 +35,6 @@ extension UIColor {
 
 let logInColor = UIColor("#4885CC")
 
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
