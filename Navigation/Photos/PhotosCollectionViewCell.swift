@@ -48,7 +48,8 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func tapAction() {
-        photosCVCellDelegate?.showPhoto(photo: photoCellImageView.image!)
+        let defaultImage = UIImage()
+        photosCVCellDelegate?.showPhoto(photo: (photoCellImageView.image ?? defaultImage))
     }
     
      func customizePhotoCell(number: Int) {

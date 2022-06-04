@@ -131,7 +131,10 @@ extension PhotosViewController: PhotosCVCellDelegate {
     func showPhoto(photo: UIImage) {
         photoView.translatesAutoresizingMaskIntoConstraints = false
         photoView.photoImageView.image = photo
+        
+        
         UIImageView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut) { [self] in
+            navigationController?.setNavigationBarHidden(true, animated: true)
             photoBackView.isHidden = false
             photoBackView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
             
@@ -146,6 +149,7 @@ extension PhotosViewController: PhotosCVCellDelegate {
             photoView.layoutIfNeeded()
 
         } completion: { [self] _ in
+            view.layoutIfNeeded()
             view.addSubview(xButton)
             xButton.addTarget(self, action: #selector(reverseAnimation), for: .touchUpInside)
 
@@ -163,7 +167,9 @@ extension PhotosViewController: PhotosCVCellDelegate {
     }
 
     @objc private func reverseAnimation() {
+        view.backgroundColor = .white
         UIImageView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut) { [self] in
+            navigationController?.setNavigationBarHidden(false, animated: true)
             photoBackView.backgroundColor = UIColor(white: 0, alpha: 0)
             photoBackView.isHidden = true
             xButton.alpha = 0
